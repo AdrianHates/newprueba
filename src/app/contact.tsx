@@ -4,7 +4,6 @@ interface Props {
   id: string;
 }
 const Contact = ({ id }: Props) => {
-
   const [formData, setFormData] = useState({
     fullName: "",
     documentNumber: "",
@@ -17,9 +16,12 @@ const Contact = ({ id }: Props) => {
     selectedColor: "",
   });
 
-  const handleChange = (e: React.ChangeEvent<HTMLInputElement | HTMLSelectElement>) => {
+  const handleChange = (
+    e: React.ChangeEvent<HTMLInputElement | HTMLSelectElement>
+  ) => {
     setFormData({ ...formData, [e.target.name]: e.target.value });
   };
+  // eslint-disable-next-line @typescript-eslint/no-unused-vars
   const handleSubmit = (e: React.FormEvent) => {
     e.preventDefault();
     console.log("Datos capturados:", formData);
@@ -96,8 +98,13 @@ const Contact = ({ id }: Props) => {
             <p className="font-bold">
               Nombre Completo <span className="text-[red]">*</span>
             </p>
-            <input name="fullName" value={formData.fullName} onChange={handleChange} className="border rounded px-3 py-1" />
-            </label>
+            <input
+              name="fullName"
+              value={formData.fullName}
+              onChange={handleChange}
+              className="border rounded px-3 py-1"
+            />
+          </label>
           <div className="flex flex-col sm:flex-row justify-between gap-2 sm:gap-6 xl:gap-10 w-full">
             <label className="flex flex-col w-full sm:w-[60%] gap-1.5">
               <p className="font-bold">
