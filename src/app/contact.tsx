@@ -21,7 +21,6 @@ const Contact = ({ id }: Props) => {
   ) => {
     setFormData({ ...formData, [e.target.name]: e.target.value });
   };
-  // eslint-disable-next-line @typescript-eslint/no-unused-vars
   const handleSubmit = (e: React.FormEvent) => {
     e.preventDefault();
     console.log("Datos capturados:", formData);
@@ -29,7 +28,7 @@ const Contact = ({ id }: Props) => {
   const [selectedSize, setSelectedSize] = useState("M");
   const [selectedColor, setSelectedColor] = useState("");
   const [officeName, setOfficeName] = useState("");
-
+  console.log(handleSubmit);
   const colors = [
     "Negro Clásico",
     "Blanco Puro",
