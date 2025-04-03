@@ -43,8 +43,8 @@ const Gallery = ({ id }: Props) => {
         Nuestro 22 colores disponibles
       </p>
 
-      <div className="text-center flex flex-col">
-        <div className="flex flex-col items-center w-[500px] gap-4 mx-auto mt-0">
+      <div className="text-center flex flex-col px-4 sm:px-16">
+        <div className="flex flex-col items-center w-full max-w-[500px] gap-4 mx-auto mt-0">
           <div
             className="overflow-hidden relative group"
             onMouseMove={handleMouseMove}
@@ -64,7 +64,7 @@ const Gallery = ({ id }: Props) => {
               </>
             )}
           </div>
-          <div className="flex justify-between w-full">
+          <div className="flex justify-between gap-4 w-full">
             {producto?.imágenes?.length > 0 &&
               producto?.imágenes?.map((img, i) => (
                 <div
