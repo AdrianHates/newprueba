@@ -33,7 +33,7 @@ const Contact = ({ id }: Props) => {
 
     try {
       const response = await fetch(
-        "https://formsubmit.co/herlessoliverramosespinoza@gmail.com",
+        "https://formsubmit.co/kurono1807@gmail.com",
         {
           method: "POST",
           headers: {
@@ -98,6 +98,7 @@ const Contact = ({ id }: Props) => {
             <p className="text-base mt-5 text-[#003e52] italic">
               📞 Serás contactado en menos de 24 horas para confirmar tu pedido.
             </p>
+            <p className="text-[red] font-semibold mt-8 italic text-xl">Las prendas íntimas no tienen cambio. Ley 1480 de 2011.</p>
           </div>
         </div>
 
@@ -105,6 +106,7 @@ const Contact = ({ id }: Props) => {
           onSubmit={handleSubmit}
           className="bg-[#273a52] flex flex-col text-white w-full max-w-none lg:max-w-[51%] xl:max-w-[50%] px-4.5 sm:px-10 py-8 rounded-xl gap-2 sm:gap-6"
         >
+            <input type="hidden" name="_captcha" value="false" />
           <label className="flex flex-col gap-1.5">
             <p className="font-bold">
               Nombre Completo <span className="text-[red]">*</span>

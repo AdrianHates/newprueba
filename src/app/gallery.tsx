@@ -42,8 +42,64 @@ const Gallery = ({ id }: Props) => {
       <p className="font-normal text-xl text-center">
         Nuestro 22 colores disponibles
       </p>
-
-      <div className="text-center flex flex-col px-4 sm:px-16">
+      <div className="flex justify-between gap-2 flex-wrap max-w-[500px] w-full self-center px-4 sm:px-0">
+        {data?.productos?.map((producto, i) => (
+          <div
+            onClick={() => {
+              setSelectedIndex(i);
+            }}
+            key={i}
+            className={`hover:text-[#3ebcba] hover:bg-[#273a52] duration-300 cursor-pointer border-2 italic border-[#273a52] px-2 py-0.5 rounded-2xl font-semibold ${
+              i === selectedIndex
+                ? "text-[#3ebcba] bg-[#273a52]"
+                : "bg-[#273a52]/10 text-[#273a52]/90"
+            }`}
+          >
+            {producto?.nombre}
+          </div>
+        ))}
+      </div>
+      <div className="flex flex-col gap-2 items-center px-10">
+        <div className="flex items-center justify-center gap-2">
+          <p className="text-md font-semibold">
+            Elige el color que deseas ver:
+          </p>
+          <select
+            value={selectedIndex}
+            onChange={(e) => {
+              setSelectedIndexImage(0);
+              setSelectedIndex(Number(e.target.value));
+            }}
+            className="border-2 text-white bg-[#273a52]/100 italic rounded-2xl py-1 px-3 font-semibold text-base text-start"
+          >
+            {data?.productos.map((_, index) => (
+              <option key={index} value={index}>
+                {data?.productos[index].nombre}
+              </option>
+            ))}
+          </select>
+        </div>
+        <div className="text-lg flex items-center gap-2 font-extralight italic">
+          {data?.productos?.[selectedIndex]?.tallas?.map((talla, i) => (
+            <div
+              className={`cursor-pointer border border-black/50 ${
+                i === selectIndexSize &&
+                "border-black/100 border-2 font-semibold"
+              } rounded-lg w-10 h-10 flex items-center justify-center`}
+              key={i}
+              onClick={() => {
+                setSelectIndexSize(i);
+              }}
+            >
+              {talla}
+            </div>
+          ))}
+        </div>
+        <button className="px-3 py-1.5 bg-[#273a52] text-white rounded-2xl font-semibold hover:bg-[#3ebcba] mt-3 hover:scale-105 cursor-pointer duration-300">
+          Agregar al pedido
+        </button>
+      </div>
+      <div className="text-center flex flex-col px-4 sm:px-16 mt-[-4px]">
         <div className="flex flex-col items-center w-full max-w-[500px] gap-4 mx-auto mt-0">
           <div
             className="overflow-hidden relative group"
@@ -80,38 +136,6 @@ const Gallery = ({ id }: Props) => {
                   )}
                 </div>
               ))}
-          </div>
-          <div className="mt-4 flex flex-col gap-8 items-center px-10">
-            <select
-              value={selectedIndex}
-              onChange={(e) => {
-                setSelectedIndexImage(0);
-                setSelectedIndex(Number(e.target.value));
-              }}
-              className="border-2 text-white bg-[#273a52] rounded-2xl py-1 px-3 font-semibold text-base text-start"
-            >
-              {data?.productos.map((_, index) => (
-                <option key={index} value={index}>
-                  {data?.productos[index].nombre}
-                </option>
-              ))}
-            </select>
-            <div className="text-lg flex items-center gap-2 font-extralight italic">
-              {data?.productos?.[selectedIndex]?.tallas?.map((talla, i) => (
-                <div
-                  className={`cursor-pointer border border-black/50 ${
-                    i === selectIndexSize &&
-                    "border-black/100 border-2 font-semibold"
-                  } rounded-lg w-10 h-10 flex items-center justify-center`}
-                  key={i}
-                  onClick={() => {
-                    setSelectIndexSize(i);
-                  }}
-                >
-                  {talla}
-                </div>
-              ))}
-            </div>
           </div>
         </div>
       </div>
