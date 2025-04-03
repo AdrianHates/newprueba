@@ -9,7 +9,7 @@ const Details = ({ id }: Props) => {
     "No planchar",
   ];
   return (
-    <section id={id} className="text-center my-[50px] px-4">
+    <section id={id} className="text-center pt-[100px] mt-[-50px] mb-[50px] px-4">
       <h2 className="text-3xl font-bold">Cuidados del producto</h2>
       <div className="flex flex-col w-full max-w-[290px] mt-8 mx-auto gap-4">
         {list &&

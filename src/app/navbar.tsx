@@ -27,12 +27,23 @@ const Navbar = ({ opts }: Props) => {
   return (
     <nav className="fixed z-20 top-0 w-full py-4 bg-white flex flex-col shadow-[0px_0px_10px_0px_rgba(0,0,0,0.05)]">
       <div className="flex justify-between items-center w-full px-10 sm:px-16">
-        <p className="font-bold uppercase w-[13ch]">🖤 {data?.nombre}</p>
+        <a href="#">
+          <p className="font-bold uppercase w-[13ch]">🖤 {data?.nombre}</p>
+        </a>
         <ul className="hidden lg:flex gap-6 font-extralight">
           {opts &&
             opts.map((opt, i) => (
-              <li key={i}>
-                <a href={"#" + opt?.toLocaleLowerCase()}>
+              <li key={i} className="relative">
+                <a
+                  href={"#" + opt?.toLocaleLowerCase()}
+                  className="font-semibold opacity-0"
+                >
+                  <p className="capitalize">{opt}</p>
+                </a>
+                <a
+                  href={"#" + opt?.toLocaleLowerCase()}
+                  className="hover:font-semibold absolute top-1/2 left-1/2 translate-x-[-50%] translate-y-[-50%]"
+                >
                   <p className="capitalize">{opt}</p>
                 </a>
               </li>
@@ -84,6 +95,9 @@ const Navbar = ({ opts }: Props) => {
               opts.map((opt, i) => (
                 <li key={i} className="flex">
                   <a
+                    onClick={() => {
+                      onToggle();
+                    }}
                     href={"#" + opt}
                     className="w-full px-10 sm:px-16 py-4 hover:bg-[#273a52] hover:text-white cursor-pointer"
                   >
@@ -91,6 +105,32 @@ const Navbar = ({ opts }: Props) => {
                   </a>
                 </li>
               ))}
+            <div className="items-center justify-center w-full flex py-4">
+              <ul className="flex sm:hidden gap-4">
+                {redes &&
+                  redes.map((red, i) => {
+                    const sub =
+                      typeof red?.link === "number"
+                        ? red.link
+                        : String(red.link)?.slice(1);
+                    return (
+                      <li key={i}>
+                        <a
+                          className="cursor-pointer"
+                          target="_blank"
+                          href={
+                            typeof red?.link === "number"
+                              ? `https://wa.me/+${sub}`
+                              : `https://www.instagram.com/${sub}/`
+                          }
+                        >
+                          <red.icon className="w-8 h-8 hover:scale-[0.9] bg-[#273a52] rounded-[50%] transition-transform duration-300" />
+                        </a>
+                      </li>
+                    );
+                  })}
+              </ul>
+            </div>
           </motion.ul>
         )}
       </AnimatePresence>

@@ -28,7 +28,7 @@ const Footer = () => {
           {opts &&
             opts.map((opt, i) => (
               <li key={i}>
-                <a href={"#" + opt?.toLocaleLowerCase()}>
+                <a href={"#" + opt?.toLocaleLowerCase()} className="hover:brightness-125">
                   <p>{opt}</p>
                 </a>
               </li>
@@ -43,7 +43,7 @@ const Footer = () => {
                   : String(social.info)?.slice(1);
               return (
                 <a
-                  className="font-extralight text-base tracking-widest flex gap-4"
+                  className="font-extralight text-base tracking-widest flex gap-4 hover:brightness-125 hover:scale-105 duration-300"
                   href={
                     typeof social?.info === "number"
                       ? `https://wa.me/+57${sub}`

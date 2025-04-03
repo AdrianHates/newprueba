@@ -27,8 +27,15 @@ export const FormProvider = ({ children }: { children: React.ReactNode }) => {
     }));
   };
 
+  const removeProduct = (index: number) => {
+    setFormData((prev) => ({
+      ...prev,
+      productos: prev.productos.filter((_, i) => i !== index),
+    }));
+  };
+
   return (
-    <FormContext.Provider value={{ formData, addProduct, updateFormData }}>
+    <FormContext.Provider value={{ formData, addProduct, updateFormData, removeProduct }}>
       {children}
     </FormContext.Provider>
   );

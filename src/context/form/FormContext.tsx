@@ -1,11 +1,11 @@
 import { createContext } from "react";
 
-interface Product {
+export type Product = {
   talla: string;
   color: string;
-}
+};
 
-export interface FormData {
+export type FormData = {
   nombreCompleto: string;
   documento: string;
   whatsapp: string;
@@ -14,13 +14,14 @@ export interface FormData {
   direccion: string;
   oficina: string;
   productos: Product[];
-}
+};
 
-interface FormContextProps {
+export type FormContextProps = {
   formData: FormData;
   addProduct: (talla: string, color: string) => void;
   updateFormData: (newData: Partial<FormData>) => void;
-}
+  removeProduct: (index: number) => void;  // Función para eliminar un producto
+};
 
 export const FormContext = createContext<FormContextProps | undefined>(
   undefined

@@ -1,5 +1,6 @@
+import { FormContext } from "../context/form/FormContext";
 import data from "../data/data.json";
-import { useState } from "react";
+import { useContext, useState } from "react";
 
 interface Props {
   id: string;
@@ -13,6 +14,13 @@ const Gallery = ({ id }: Props) => {
     "translate(0%, 0%) scale(1)"
   );
 
+  const context = useContext(FormContext);
+
+  if (!context) {
+    throw new Error("Gallery must be used within a FormProvider");
+  }
+  const { addProduct, formData } = context;
+  console.log(formData);
   const producto = data?.productos?.[selectedIndex];
 
   const handleMouseMove = (e: React.MouseEvent<HTMLDivElement>) => {
@@ -34,8 +42,22 @@ const Gallery = ({ id }: Props) => {
     setTransformStyle("translate(0%, 0%) scale(1)"); // Volver a la posición inicial
   };
 
+  const handleAddToCart = () => {
+    // Agregar el producto seleccionado al carrito
+    const selectedProduct = {
+      talla: producto?.tallas?.[selectIndexSize],
+      color: producto?.nombre, // Aquí puedes usar cualquier propiedad de color del producto
+    };
+
+    addProduct(selectedProduct.talla, selectedProduct.color);
+    alert("✅Producto agregado al pedido");
+  };
+
   return (
-    <section id={id} className="py-[50px] flex flex-col gap-10 bg-[#f2f4f4]">
+    <section
+      id={id}
+      className="mt-[-50px] pt-[95px] pb-[50px] flex flex-col gap-10 bg-[#f2f4f4]"
+    >
       <p className="text-3xl md:text-[40px] leading-[1] text-center font-semibold text-[#003e52]">
         Galería
       </p>
@@ -60,7 +82,7 @@ const Gallery = ({ id }: Props) => {
         ))}
       </div>
       <div className="flex flex-col gap-2 items-center px-10">
-        <div className="flex items-center justify-center gap-2">
+        <div className="flex sm:flex-row flex-col items-center justify-center gap-2">
           <p className="text-md font-semibold">
             Elige el color que deseas ver:
           </p>
@@ -95,7 +117,10 @@ const Gallery = ({ id }: Props) => {
             </div>
           ))}
         </div>
-        <button className="px-3 py-1.5 bg-[#273a52] text-white rounded-2xl font-semibold hover:bg-[#3ebcba] mt-3 hover:scale-105 cursor-pointer duration-300">
+        <button
+          onClick={handleAddToCart}
+          className="px-3 py-1.5 bg-[#273a52] text-white rounded-2xl font-semibold hover:bg-[#3ebcba] mt-3 hover:scale-105 cursor-pointer duration-300"
+        >
           Agregar al pedido
         </button>
       </div>

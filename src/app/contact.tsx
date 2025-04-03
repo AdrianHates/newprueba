@@ -1,5 +1,6 @@
 import { useContext } from "react";
 import { FormContext } from "../context/form/FormContext";
+import data from "../data/data.json";
 
 interface Props {
   id: string;
@@ -9,7 +10,7 @@ const Contact = ({ id }: Props) => {
   if (!formContext) {
     throw new Error("Contact debe estar dentro de un FormProvider");
   }
-  const { formData, updateFormData } = formContext;
+  const { formData, updateFormData, removeProduct } = formContext;
 
   const handleChange = (
     e: React.ChangeEvent<HTMLInputElement | HTMLSelectElement>
@@ -20,7 +21,7 @@ const Contact = ({ id }: Props) => {
   return (
     <section
       id={id}
-      className="py-[50px] flex flex-col gap-16 px-6 sm:px-10 md:px-32 lg:px-16 tracking-normal"
+      className="mt-[-50px] py-[100px] pb-[50px] flex flex-col gap-16 px-6 sm:px-10 md:px-32 lg:px-16 tracking-normal"
     >
       <h2 className="text-3xl md:text-[40px] leading-[1.5] text-center font-semibold text-[#003e52]">
         Elige tu Color y Talla – Compra Fácil y Rápida
@@ -57,9 +58,9 @@ const Contact = ({ id }: Props) => {
         </div>
 
         <form
-          action={"https://formsubmit.co/herlessoliverramosespinoza@gmail.com"}
+          action={`https://formsubmit.co/${data?.correo}`}
           method="POST"
-          className="bg-[#273a52] flex flex-col text-white w-full max-w-none lg:max-w-[51%] xl:max-w-[50%] px-4.5 sm:px-10 py-8 rounded-xl gap-2 sm:gap-6"
+          className="bg-[#273a52] flex flex-col relative text-white w-full max-w-none lg:max-w-[51%] xl:max-w-[50%] px-4.5 sm:px-10 py-8 rounded-xl gap-2 sm:gap-6"
         >
           <input type="hidden" name="_captcha" value="false" />
           <label className="flex flex-col gap-1.5">
@@ -82,6 +83,9 @@ const Contact = ({ id }: Props) => {
               </p>
 
               <input
+                required
+                type="text"
+                pattern="\d+"
                 name="documento"
                 value={formData.documento}
                 onChange={handleChange}
@@ -93,6 +97,8 @@ const Contact = ({ id }: Props) => {
                 WhatsApp <span className="text-[red]">*</span>
               </p>
               <input
+                required
+                type="tel"
                 name="whatsapp"
                 value={formData.whatsapp}
                 onChange={handleChange}
@@ -106,6 +112,8 @@ const Contact = ({ id }: Props) => {
                 Ciudad <span className="text-[red]">*</span>
               </p>
               <input
+                required
+                type="text"
                 name="ciudad"
                 value={formData.ciudad}
                 onChange={handleChange}
@@ -117,6 +125,8 @@ const Contact = ({ id }: Props) => {
                 Barrio <span className="text-[red]">*</span>
               </p>
               <input
+                type="text"
+                required
                 name="barrio"
                 value={formData.barrio}
                 onChange={handleChange}
@@ -129,6 +139,8 @@ const Contact = ({ id }: Props) => {
               Dirección <span className="text-[red]">*</span>
             </p>
             <input
+              type="text"
+              required
               name="direccion"
               value={formData.direccion}
               onChange={handleChange}
@@ -138,51 +150,47 @@ const Contact = ({ id }: Props) => {
           <label className="flex flex-col gap-1.5">
             <p className="font-bold">Oficina (Opcional)</p>
             <input
+              type="text"
               name="oficina"
               value={formData.oficina}
               onChange={handleChange}
               className="border rounded-2xl px-3 py-1"
             />
           </label>
-          <div className="flex flex-col sm:flex-row gap-2 sm:gap-10">
-            {/*
-              <label className="flex flex-col gap-1.5">
-              <p className="font-bold">
-                Talla <span className="text-[red]">*</span>
-              </p>
-              <select
-                name="selectedSize"
-                value={formData.selectedSize}
-                onChange={handleChange}
-                className="text-white bg-[#273a52] border rounded px-3 py-1"
-              >
-                {sizes.map((size) => (
-                  <option key={size} value={size}>
-                    {size}
-                  </option>
-                ))}
-              </select>
-            </label>
-            <label className="flex flex-col gap-1.5">
-              <p className="font-bold">
-                Color <span className="text-[red]">*</span>
-              </p>
-              <select
-                name="selectedColor"
-                value={formData.selectedColor}
-                onChange={handleChange}
-                className="text-white bg-[#273a52] border rounded px-3 py-1"
-              >
-                {colors.map((color) => (
-                  <option key={color} value={color}>
-                    {color}
-                  </option>
-                ))}
-              </select>
-            </label>
-              */}
+          <div className="flex flex-col gap-1.5">
+            <p className="font-bold">Productos Seleccionados:</p>
+            <div className="flex flex-wrap gap-2">
+              {formData.productos.map((producto, index) => (
+                <div
+                  key={index}
+                  className="flex items-center gap-4 border border-white/50 px-2 py-1 rounded-2xl hover:bg-black/30 duratin-300"
+                >
+                  <span>
+                    {producto.talla} - {producto.color}
+                  </span>
+                  <button
+                    type="button"
+                    onClick={() => removeProduct(index)} // Llama a la función de eliminación
+                    className="cursor-not-allowed"
+                  >
+                    <img src="eliminar.svg" className="w-4 h-4" alt="remove" />
+                  </button>
+                </div>
+              ))}
+            </div>
           </div>
-
+          <label className="flex flex-col gap-1.5 opacity-0 absolute pointer-events-none">
+            <p className="font-bold">Productos Seleccionados:</p>
+            <input
+              type="text"
+              name="productos"
+              value={formData.productos
+                .map((producto) => `${producto.talla} - ${producto.color}`)
+                .join(", ")} // Muestra los productos con formato "talla - color"
+              readOnly
+              className="border rounded-2xl px-3 py-1 text-gray-600"
+            />
+          </label>
           <button
             type="submit"
             className="bg-[#3ebcba] rounded-2xl mt-3 px-3 py-2 font-semibold cursor-pointer hover:saturate-150 hover:scale-105 duration-300"
