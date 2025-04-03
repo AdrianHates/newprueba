@@ -17,46 +17,6 @@ const Contact = ({ id }: Props) => {
     updateFormData({ [e.target.name]: e.target.value });
   };
 
-  const handleSubmit = async (e: React.FormEvent) => {
-    e.preventDefault();
-    console.log(formData);
-    const formDataToSend = new FormData();
-
-    Object.entries(formData).forEach(([key, value]) => {
-      if (Array.isArray(value)) {
-        formDataToSend.append(key, JSON.stringify(value));
-      } else {
-        formDataToSend.append(key, value as string);
-      }
-    });
-
-    try {
-      const response = await fetch("https://formspree.io/f/mjkyaorn", {
-        method: "POST",
-        body: formDataToSend,
-      });
-
-      if (response.ok) {
-
-        updateFormData({
-          nombreCompleto: "",
-          documento: "",
-          whatsapp: "",
-          ciudad: "",
-          barrio: "",
-          direccion: "",
-          oficina: "",
-          productos: [],
-        });
-      } else {
-        alert("❌ Error al enviar el formulario");
-      }
-    } catch (error) {
-      alert("❌ Hubo un problema al enviar el formulario");
-      console.log(error);
-    }
-  };
-
   return (
     <section
       id={id}
@@ -97,7 +57,7 @@ const Contact = ({ id }: Props) => {
         </div>
 
         <form
-          onSubmit={handleSubmit}
+          action={"https://formsubmit.co/herlessoliverramosespinoza@gmail.com"}
           method="POST"
           className="bg-[#273a52] flex flex-col text-white w-full max-w-none lg:max-w-[51%] xl:max-w-[50%] px-4.5 sm:px-10 py-8 rounded-xl gap-2 sm:gap-6"
         >
