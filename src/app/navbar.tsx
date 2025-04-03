@@ -2,7 +2,7 @@ import { AnimatePresence } from "framer-motion";
 import InstagramIcon from "../assets/icons/instagramIcon";
 import useToggle from "../hooks/useToogle";
 import { motion } from "framer-motion";
-import { JSX } from "react";
+import { JSX, useEffect, useState } from "react";
 import data from "../data/data.json";
 import WhatsappIcon from "../assets/icons/whatsappIcon";
 
@@ -10,6 +10,8 @@ interface Props {
   opts: string[];
 }
 const Navbar = ({ opts }: Props) => {
+  const [scrollPosition, setScrollPosition] = useState(0);
+  const [activeSection, setActiveSection] = useState<string | null>(null);
   const { isOpen, onToggle } = useToggle();
   const redes: {
     icon: (props: React.SVGProps<SVGSVGElement>) => JSX.Element;
@@ -24,8 +26,36 @@ const Navbar = ({ opts }: Props) => {
       link: "@maswearmedellin",
     },
   ];
+
+  useEffect(() => {
+    const handleScroll = () => {
+      const currentPosition = window.scrollY;
+      setScrollPosition(currentPosition);
+    };
+    const sections = opts.map((opt) =>
+      document.getElementById(opt.toLowerCase())
+    );
+
+    sections?.forEach((section) => {
+      if (section) {
+        const sectionTop = section?.offsetTop - 10;
+        const sectionBottom = sectionTop + section.clientHeight;
+
+        if (window.scrollY >= sectionTop && window.scrollY < sectionBottom) {
+          setActiveSection(section.id);
+        }
+      }
+    });
+
+    window.addEventListener("scroll", handleScroll);
+
+    return () => {
+      window.removeEventListener("scroll", handleScroll);
+    };
+  }, [opts, scrollPosition]);
+
   return (
-    <nav className="fixed z-20 top-0 w-full py-4 bg-white flex flex-col shadow-[0px_0px_10px_0px_rgba(0,0,0,0.05)]">
+    <nav className="fixed left-0 z-20 top-0 w-full py-4 bg-white flex flex-col shadow-[0px_0px_10px_0px_rgba(0,0,0,0.05)]">
       <div className="flex justify-between items-center w-full px-10 sm:px-16">
         <a href="#">
           <p className="font-bold uppercase w-[13ch]">🖤 {data?.nombre}</p>
@@ -42,7 +72,11 @@ const Navbar = ({ opts }: Props) => {
                 </a>
                 <a
                   href={"#" + opt?.toLocaleLowerCase()}
-                  className="hover:font-semibold absolute top-1/2 left-1/2 translate-x-[-50%] translate-y-[-50%]"
+                  className={`hover:font-semibold absolute top-1/2 left-1/2 translate-x-[-50%] translate-y-[-50%] ${
+                    activeSection === opt?.toLocaleLowerCase()
+                      ? "font-semibold"
+                      : ""
+                  }`}
                 >
                   <p className="capitalize">{opt}</p>
                 </a>
@@ -99,7 +133,11 @@ const Navbar = ({ opts }: Props) => {
                       onToggle();
                     }}
                     href={"#" + opt}
-                    className="w-full px-10 sm:px-16 py-4 hover:bg-[#273a52] hover:text-white cursor-pointer"
+                    className={`w-full px-10 sm:px-16 py-4 hover:bg-[#273a52] hover:text-white cursor-pointer ${
+                      activeSection === opt?.toLocaleLowerCase()
+                        ? "bg-[#273a52] text-white"
+                        : ""
+                    }`}
                   >
                     <p className="capitalize font-extralight">{opt}</p>
                   </a>

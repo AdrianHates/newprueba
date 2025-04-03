@@ -14,7 +14,7 @@ function App() {
   const lowerOpts = opts?.map((opt) => opt?.toLowerCase());
 
   return (
-    <main className="font-montserrat bg-[white] sm:tracking-wide">
+    <main className="font-montserrat sm:tracking-wide w-full max-w-[1536px] flex flex-col overflow-hidden">
       <Navbar opts={lowerOpts} />
       <Inicio id={lowerOpts[0]} numberPhone={numberPhone} />
       <Features id={lowerOpts[1]} />
