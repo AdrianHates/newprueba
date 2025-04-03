@@ -39,7 +39,7 @@ const Gallery = ({ id }: Props) => {
       <p className="text-3xl md:text-[40px] leading-[1] text-center font-semibold text-[#003e52]">
         Galería
       </p>
-      <p className="font-semibold text-xl text-center">
+      <p className="font-normal text-xl text-center">
         Nuestro 22 colores disponibles
       </p>
 
@@ -81,14 +81,14 @@ const Gallery = ({ id }: Props) => {
                 </div>
               ))}
           </div>
-          <div className="mt-10 flex flex-col gap-8 items-center px-10">
+          <div className="mt-4 flex flex-col gap-8 items-center px-10">
             <select
               value={selectedIndex}
               onChange={(e) => {
                 setSelectedIndexImage(0);
                 setSelectedIndex(Number(e.target.value));
               }}
-              className="border-2 text-white bg-[#273a52] rounded-2xl py-1 px-3 font-semibold text-base text-center"
+              className="border-2 text-white bg-[#273a52] rounded-2xl py-1 px-3 font-semibold text-base text-start"
             >
               {data?.productos.map((_, index) => (
                 <option key={index} value={index}>

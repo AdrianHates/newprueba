@@ -1,54 +1,60 @@
-import { useState } from "react";
+import { useContext } from "react";
+import { FormContext } from "../context/form/FormContext";
 
 interface Props {
   id: string;
 }
 const Contact = ({ id }: Props) => {
-  const [formData, setFormData] = useState({
-    fullName: "",
-    documentNumber: "",
-    whatsapp: "",
-    city: "",
-    neighborhood: "",
-    address: "",
-    officeName: "",
-    selectedSize: "M",
-    selectedColor: "Negro Clásico",
-  });
+  const formContext = useContext(FormContext);
+  if (!formContext) {
+    throw new Error("Contact debe estar dentro de un FormProvider");
+  }
+  const { formData, updateFormData } = formContext;
 
   const handleChange = (
     e: React.ChangeEvent<HTMLInputElement | HTMLSelectElement>
   ) => {
-    setFormData({ ...formData, [e.target.name]: e.target.value });
+    updateFormData({ [e.target.name]: e.target.value });
   };
 
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
+    console.log(formData);
     const formDataToSend = new FormData();
+
     Object.entries(formData).forEach(([key, value]) => {
-      formDataToSend.append(key, value);
+      if (Array.isArray(value)) {
+        // Convertir array a JSON string antes de enviarlo
+        formDataToSend.append(key, JSON.stringify(value));
+      } else {
+        formDataToSend.append(key, value as string);
+      }
     });
+
     try {
       const response = await fetch(
         "https://formsubmit.co/herlessoliverramosespinoza@gmail.com",
         {
           method: "POST",
+          headers: {
+            Accept: "application/json",
+          },
           body: formDataToSend,
         }
       );
 
       if (response.ok) {
         alert("✅ Formulario enviado correctamente");
-        setFormData({
-          fullName: "",
-          documentNumber: "",
+
+        updateFormData({
+          nombreCompleto: "",
+          documento: "",
           whatsapp: "",
-          city: "",
-          neighborhood: "",
-          address: "",
-          officeName: "",
-          selectedSize: "M",
-          selectedColor: "",
+          ciudad: "",
+          barrio: "",
+          direccion: "",
+          oficina: "",
+          productos: [],
         });
       } else {
         alert("❌ Error al enviar el formulario");
@@ -58,33 +64,6 @@ const Contact = ({ id }: Props) => {
       console.log(error);
     }
   };
-
-  const colors = [
-    "Negro Clásico",
-    "Blanco Puro",
-    "Gris Elegante",
-    "Azul Navy",
-    "Rojo Pasión",
-    "Verde Esmeralda",
-    "Mostaza Vibrante",
-    "Vino Tinto",
-    "Naranja Neón",
-    "Azul Rey",
-    "Fucsia Impactante",
-    "Turquesa Claro",
-    "Lila Suave",
-    "Café Tierra",
-    "Beige Natural",
-    "Gris Oxford",
-    "Rojo Intenso",
-    "Verde Militar",
-    "Azul Celeste",
-    "Amarillo Brillante",
-    "Rosa Pastel",
-    "Negro con Detalles Dorados",
-  ];
-
-  const sizes = ["S", "M", "L", "XL"];
 
   return (
     <section
@@ -131,8 +110,8 @@ const Contact = ({ id }: Props) => {
               Nombre Completo <span className="text-[red]">*</span>
             </p>
             <input
-              name="fullName"
-              value={formData.fullName}
+              name="nombreCompleto"
+              value={formData.nombreCompleto}
               onChange={handleChange}
               className="border rounded-2xl px-3 py-1"
             />
@@ -144,8 +123,8 @@ const Contact = ({ id }: Props) => {
               </p>
 
               <input
-                name="documentNumber"
-                value={formData.documentNumber}
+                name="documento"
+                value={formData.documento}
                 onChange={handleChange}
                 className="border rounded-2xl px-3 py-1"
               />
@@ -168,8 +147,8 @@ const Contact = ({ id }: Props) => {
                 Ciudad <span className="text-[red]">*</span>
               </p>
               <input
-                name="city"
-                value={formData.city}
+                name="ciudad"
+                value={formData.ciudad}
                 onChange={handleChange}
                 className="border rounded-2xl px-3 py-1"
               />
@@ -179,8 +158,8 @@ const Contact = ({ id }: Props) => {
                 Barrio <span className="text-[red]">*</span>
               </p>
               <input
-                name="neighborhood"
-                value={formData.neighborhood}
+                name="barrio"
+                value={formData.barrio}
                 onChange={handleChange}
                 className="border rounded-2xl px-3 py-1"
               />
@@ -191,8 +170,8 @@ const Contact = ({ id }: Props) => {
               Dirección <span className="text-[red]">*</span>
             </p>
             <input
-              name="address"
-              value={formData.address}
+              name="direccion"
+              value={formData.direccion}
               onChange={handleChange}
               className="border rounded-2xl px-3 py-1"
             />
@@ -200,14 +179,15 @@ const Contact = ({ id }: Props) => {
           <label className="flex flex-col gap-1.5">
             <p className="font-bold">Oficina (Opcional)</p>
             <input
-              name="officeName"
-              value={formData.officeName}
+              name="oficina"
+              value={formData.oficina}
               onChange={handleChange}
               className="border rounded-2xl px-3 py-1"
             />
           </label>
           <div className="flex flex-col sm:flex-row gap-2 sm:gap-10">
-            <label className="flex flex-col gap-1.5">
+            {/*
+              <label className="flex flex-col gap-1.5">
               <p className="font-bold">
                 Talla <span className="text-[red]">*</span>
               </p>
@@ -241,6 +221,7 @@ const Contact = ({ id }: Props) => {
                 ))}
               </select>
             </label>
+              */}
           </div>
 
           <button className="bg-[#3ebcba] rounded-2xl mt-3 px-3 py-2 font-semibold cursor-pointer hover:saturate-150 hover:scale-105 duration-300">
