@@ -24,7 +24,6 @@ const Contact = ({ id }: Props) => {
 
     Object.entries(formData).forEach(([key, value]) => {
       if (Array.isArray(value)) {
-        // Convertir array a JSON string antes de enviarlo
         formDataToSend.append(key, JSON.stringify(value));
       } else {
         formDataToSend.append(key, value as string);
@@ -32,19 +31,12 @@ const Contact = ({ id }: Props) => {
     });
 
     try {
-      const response = await fetch(
-        "https://formsubmit.co/kurono1807@gmail.com",
-        {
-          method: "POST",
-          headers: {
-            Accept: "application/json",
-          },
-          body: formDataToSend,
-        }
-      );
+      const response = await fetch("https://formspree.io/f/mjkyaorn", {
+        method: "POST",
+        body: formDataToSend,
+      });
 
       if (response.ok) {
-        alert("✅ Formulario enviado correctamente");
 
         updateFormData({
           nombreCompleto: "",
@@ -98,20 +90,25 @@ const Contact = ({ id }: Props) => {
             <p className="text-base mt-5 text-[#003e52] italic">
               📞 Serás contactado en menos de 24 horas para confirmar tu pedido.
             </p>
-            <p className="text-[red] font-semibold mt-8 italic text-xl">Las prendas íntimas no tienen cambio. Ley 1480 de 2011.</p>
+            <p className="text-[red] font-semibold mt-8 italic text-xl">
+              Las prendas íntimas no tienen cambio. Ley 1480 de 2011.
+            </p>
           </div>
         </div>
 
         <form
           onSubmit={handleSubmit}
+          method="POST"
           className="bg-[#273a52] flex flex-col text-white w-full max-w-none lg:max-w-[51%] xl:max-w-[50%] px-4.5 sm:px-10 py-8 rounded-xl gap-2 sm:gap-6"
         >
-            <input type="hidden" name="_captcha" value="false" />
+          <input type="hidden" name="_captcha" value="false" />
           <label className="flex flex-col gap-1.5">
             <p className="font-bold">
               Nombre Completo <span className="text-[red]">*</span>
             </p>
             <input
+              type="text"
+              required
               name="nombreCompleto"
               value={formData.nombreCompleto}
               onChange={handleChange}
@@ -226,7 +223,10 @@ const Contact = ({ id }: Props) => {
               */}
           </div>
 
-          <button className="bg-[#3ebcba] rounded-2xl mt-3 px-3 py-2 font-semibold cursor-pointer hover:saturate-150 hover:scale-105 duration-300">
+          <button
+            type="submit"
+            className="bg-[#3ebcba] rounded-2xl mt-3 px-3 py-2 font-semibold cursor-pointer hover:saturate-150 hover:scale-105 duration-300"
+          >
             Enviar Información
           </button>
         </form>
