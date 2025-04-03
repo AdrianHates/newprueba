@@ -3,7 +3,7 @@ import InstagramIcon from "../assets/icons/instagramIcon";
 import useToggle from "../hooks/useToogle";
 import { motion } from "framer-motion";
 import { JSX } from "react";
-
+import data from "../data/data.json";
 import WhatsappIcon from "../assets/icons/whatsappIcon";
 
 interface Props {
@@ -25,9 +25,9 @@ const Navbar = ({ opts }: Props) => {
     },
   ];
   return (
-    <nav className="fixed z-20 top-0 w-full pt-9 pb-7 bg-white flex flex-col shadow-[0px_0px_10px_0px_rgba(0,0,0,0.05)]">
-      <div className="flex justify-between w-full px-10 sm:px-16">
-        <p>Maswear</p>
+    <nav className="fixed z-20 top-0 w-full py-4 bg-white flex flex-col shadow-[0px_0px_10px_0px_rgba(0,0,0,0.05)]">
+      <div className="flex justify-between items-center w-full px-10 sm:px-16">
+        <p className="font-bold uppercase w-[13ch]">🖤 {data?.nombre}</p>
         <ul className="hidden lg:flex gap-6 font-extralight">
           {opts &&
             opts.map((opt, i) => (

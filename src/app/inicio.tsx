@@ -6,7 +6,7 @@ const Inicio = ({ id, numberPhone }: Props) => {
   return (
     <section
       id={id}
-      className="relative bg-[url(/bg-inicio.png)] bg-fixed bg-center bg-cover min-h-[100vh] pt-[96px] flex items-center justify-center"
+      className="relative bg-[url(/bg-inicio.png)] bg-fixed bg-center bg-cover min-h-[100vh] pt-[80px] flex items-center justify-center"
     >
       <div className="relative z-10 text-center text-white px-3 sm:px-10 md:px-0 w-full md:w-[600px] flex flex-col gap-10">
         <h1 className="text-2xl min-[400px]:text-3xl md:text-4xl leading-[1.5] font-bold">

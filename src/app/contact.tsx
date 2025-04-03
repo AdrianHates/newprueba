@@ -13,7 +13,7 @@ const Contact = ({ id }: Props) => {
     address: "",
     officeName: "",
     selectedSize: "M",
-    selectedColor: "",
+    selectedColor: "Negro Clásico",
   });
 
   const handleChange = (
@@ -21,14 +21,44 @@ const Contact = ({ id }: Props) => {
   ) => {
     setFormData({ ...formData, [e.target.name]: e.target.value });
   };
-  const handleSubmit = (e: React.FormEvent) => {
+
+  const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
-    console.log("Datos capturados:", formData);
+    const formDataToSend = new FormData();
+    Object.entries(formData).forEach(([key, value]) => {
+      formDataToSend.append(key, value);
+    });
+    try {
+      const response = await fetch(
+        "https://formsubmit.co/herlessoliverramosespinoza@gmail.com",
+        {
+          method: "POST",
+          body: formDataToSend,
+        }
+      );
+
+      if (response.ok) {
+        alert("✅ Formulario enviado correctamente");
+        setFormData({
+          fullName: "",
+          documentNumber: "",
+          whatsapp: "",
+          city: "",
+          neighborhood: "",
+          address: "",
+          officeName: "",
+          selectedSize: "M",
+          selectedColor: "",
+        });
+      } else {
+        alert("❌ Error al enviar el formulario");
+      }
+    } catch (error) {
+      alert("❌ Hubo un problema al enviar el formulario");
+      console.log(error);
+    }
   };
-  const [selectedSize, setSelectedSize] = useState("M");
-  const [selectedColor, setSelectedColor] = useState("");
-  const [officeName, setOfficeName] = useState("");
-  console.log(handleSubmit);
+
   const colors = [
     "Negro Clásico",
     "Blanco Puro",
@@ -72,7 +102,7 @@ const Contact = ({ id }: Props) => {
             formulario para realizar tu pedido.
           </p>
 
-          <p className="text-2xl sm:text-3xl flex flex-wrap mt-16">
+          <div className="text-2xl sm:text-3xl flex flex-wrap mt-16">
             <img src="star.svg" alt="star" className="w-5 h-5" />
             <span className="bg-[#3ebcba] rounded-lg pt-0.5 pb-1 px-1">
               📍 Compra Contra Entrega
@@ -89,10 +119,13 @@ const Contact = ({ id }: Props) => {
             <p className="text-base mt-5 text-[#003e52] italic">
               📞 Serás contactado en menos de 24 horas para confirmar tu pedido.
             </p>
-          </p>
+          </div>
         </div>
 
-        <form className="bg-[#273a52] flex flex-col text-white w-full max-w-none lg:max-w-[51%] xl:max-w-[50%] px-4.5 sm:px-10 py-8 rounded-xl gap-2 sm:gap-6">
+        <form
+          onSubmit={handleSubmit}
+          className="bg-[#273a52] flex flex-col text-white w-full max-w-none lg:max-w-[51%] xl:max-w-[50%] px-4.5 sm:px-10 py-8 rounded-xl gap-2 sm:gap-6"
+        >
           <label className="flex flex-col gap-1.5">
             <p className="font-bold">
               Nombre Completo <span className="text-[red]">*</span>
@@ -101,7 +134,7 @@ const Contact = ({ id }: Props) => {
               name="fullName"
               value={formData.fullName}
               onChange={handleChange}
-              className="border rounded px-3 py-1"
+              className="border rounded-2xl px-3 py-1"
             />
           </label>
           <div className="flex flex-col sm:flex-row justify-between gap-2 sm:gap-6 xl:gap-10 w-full">
@@ -109,13 +142,24 @@ const Contact = ({ id }: Props) => {
               <p className="font-bold">
                 Número de Documento <span className="text-[red]">*</span>
               </p>
-              <input className=" border-1 rounded-2xl px-3 p-1" />
+
+              <input
+                name="documentNumber"
+                value={formData.documentNumber}
+                onChange={handleChange}
+                className="border rounded-2xl px-3 py-1"
+              />
             </label>
             <label className="flex flex-col w-full sm:w-[40%] gap-1.5">
               <p className="font-bold">
                 WhatsApp <span className="text-[red]">*</span>
               </p>
-              <input className=" border-1 rounded-2xl px-3 p-1" />
+              <input
+                name="whatsapp"
+                value={formData.whatsapp}
+                onChange={handleChange}
+                className="border rounded-2xl px-3 py-1"
+              />
             </label>
           </div>
           <div className="flex flex-col sm:flex-row justify-between gap-2 sm:gap-6 xl:gap-10 w-full">
@@ -123,29 +167,43 @@ const Contact = ({ id }: Props) => {
               <p className="font-bold">
                 Ciudad <span className="text-[red]">*</span>
               </p>
-              <input className=" border-1 rounded-2xl px-3 p-1" />
+              <input
+                name="city"
+                value={formData.city}
+                onChange={handleChange}
+                className="border rounded-2xl px-3 py-1"
+              />
             </label>
             <label className="flex flex-col w-full sm:w-[50%] gap-1.5">
               <p className="font-bold">
                 Barrio <span className="text-[red]">*</span>
               </p>
-              <input className=" border-1 rounded-2xl px-3 p-1" />
+              <input
+                name="neighborhood"
+                value={formData.neighborhood}
+                onChange={handleChange}
+                className="border rounded-2xl px-3 py-1"
+              />
             </label>
           </div>
           <label className="flex flex-col gap-1.5">
             <p className="font-bold">
               Dirección <span className="text-[red]">*</span>
             </p>
-            <input className=" border-1 rounded-2xl px-3 p-1" />
+            <input
+              name="address"
+              value={formData.address}
+              onChange={handleChange}
+              className="border rounded-2xl px-3 py-1"
+            />
           </label>
           <label className="flex flex-col gap-1.5">
             <p className="font-bold">Oficina (Opcional)</p>
             <input
-              type="text"
-              value={officeName}
-              onChange={(e) => setOfficeName(e.target.value)}
-              className="w-full px-3 py-1 bg-[#273a52] text-white border rounded-3xl"
-              placeholder="Ej: Oficina Principal - Calle 123"
+              name="officeName"
+              value={formData.officeName}
+              onChange={handleChange}
+              className="border rounded-2xl px-3 py-1"
             />
           </label>
           <div className="flex flex-col sm:flex-row gap-2 sm:gap-10">
@@ -154,9 +212,10 @@ const Contact = ({ id }: Props) => {
                 Talla <span className="text-[red]">*</span>
               </p>
               <select
-                className="w-20 p-2 bg-[#273a52] border rounded-lg"
-                value={selectedSize}
-                onChange={(e) => setSelectedSize(e.target.value)}
+                name="selectedSize"
+                value={formData.selectedSize}
+                onChange={handleChange}
+                className="text-white bg-[#273a52] border rounded px-3 py-1"
               >
                 {sizes.map((size) => (
                   <option key={size} value={size}>
@@ -170,12 +229,13 @@ const Contact = ({ id }: Props) => {
                 Color <span className="text-[red]">*</span>
               </p>
               <select
-                className="w-40 p-2 bg-[#273a52] text-white border rounded-lg"
-                value={selectedColor}
-                onChange={(e) => setSelectedColor(e.target.value)}
+                name="selectedColor"
+                value={formData.selectedColor}
+                onChange={handleChange}
+                className="text-white bg-[#273a52] border rounded px-3 py-1"
               >
                 {colors.map((color) => (
-                  <option key={color} value={color} data-color={color}>
+                  <option key={color} value={color}>
                     {color}
                   </option>
                 ))}
@@ -183,7 +243,7 @@ const Contact = ({ id }: Props) => {
             </label>
           </div>
 
-          <button className="bg-[#3ebcba] rounded-2xl mt-3 px-3 py-2 font-semibold">
+          <button className="bg-[#3ebcba] rounded-2xl mt-3 px-3 py-2 font-semibold cursor-pointer hover:saturate-150 hover:scale-105 duration-300">
             Enviar Información
           </button>
         </form>

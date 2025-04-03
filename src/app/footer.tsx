@@ -50,8 +50,9 @@ const Footer = () => {
                       : `https://www.instagram.com/${sub}/`
                   }
                   target="_blank"
+                  key={i}
                 >
-                  <social.icon key={i} className="w-8 h-8" />
+                  <social.icon className="w-8 h-8" />
                   <p>{social?.info}</p>
                 </a>
               );

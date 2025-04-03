@@ -1,0 +1,187 @@
+{
+  "nombre": "Mas Wear Medellin",
+  "correo": "pedidosmaswear@gmail.com",
+  "instagram": "maswearmedellin",
+  "productos": [
+    {
+      "nombre": "Arena",
+      "imágenes": [
+        "https://www.maswearunderwear.com.co/wp-content/uploads/2023/02/MG_7688-scaled.jpg",
+        "https://www.maswearunderwear.com.co/wp-content/uploads/2023/02/MG_7418-scaled.jpg",
+        "https://www.maswearunderwear.com.co/wp-content/uploads/2023/02/MG_7420-scaled.jpg"
+      ],
+      "tallas": ["S", "M", "L", "XL"]
+    },
+    {
+      "nombre": "Azul Claro",
+      "imágenes": [
+        "https://www.maswearunderwear.com.co/wp-content/uploads/2024/07/MG_9760_1-scaled.jpg",
+        "https://www.maswearunderwear.com.co/wp-content/uploads/2024/07/MG_9762_1-scaled.jpg",
+        "https://www.maswearunderwear.com.co/wp-content/uploads/2024/07/MG_9763_1-scaled.jpg"
+      ],
+      "tallas": ["S", "M", "L", "XL"]
+    },
+    {
+      "nombre": "Azul Marino",
+      "imágenes": [
+        "https://www.maswearunderwear.com.co/wp-content/uploads/2024/07/MG_9743_1-scaled.jpg",
+        "https://www.maswearunderwear.com.co/wp-content/uploads/2024/07/MG_9748_1-scaled.jpg",
+        "https://www.maswearunderwear.com.co/wp-content/uploads/2024/07/MG_9749_1-scaled.jpg"
+      ],
+      "tallas": ["S", "M", "L"]
+    },
+    {
+      "nombre": "Azul Oscuro",
+      "imágenes": [
+        "https://www.maswearunderwear.com.co/wp-content/uploads/2023/02/MG_7565-scaled.jpg",
+        "https://www.maswearunderwear.com.co/wp-content/uploads/2023/02/MG_7405-scaled.jpg",
+        "https://www.maswearunderwear.com.co/wp-content/uploads/2023/02/MG_7408-scaled.jpg"
+      ],
+      "tallas": ["S", "M", "L", "XL"]
+    },
+    {
+      "nombre": "Azul Rey",
+      "imágenes": [
+        "https://www.maswearunderwear.com.co/wp-content/uploads/2023/08/IMG_7518-scaled.jpg",
+        "https://www.maswearunderwear.com.co/wp-content/uploads/2023/02/MG_7394-scaled.jpg",
+        "https://www.maswearunderwear.com.co/wp-content/uploads/2023/02/MG_7396-scaled.jpg"
+      ],
+      "tallas": ["S", "M", "L", "XL"]
+    },
+    {
+      "nombre": "Blanco",
+      "imágenes": [
+        "https://www.maswearunderwear.com.co/wp-content/uploads/2023/07/1-scaled.jpeg",
+        "https://www.maswearunderwear.com.co/wp-content/uploads/2023/01/MG_7360-scaled.jpg",
+        "https://www.maswearunderwear.com.co/wp-content/uploads/2023/01/MG_7362-scaled.jpg"
+      ],
+      "tallas": ["S", "M", "L", "XL"]
+    },
+    {
+      "nombre": "Chicle",
+      "imágenes": [
+        "https://www.maswearunderwear.com.co/wp-content/uploads/2024/07/MG_9766_1-scaled.jpg",
+        "https://www.maswearunderwear.com.co/wp-content/uploads/2024/07/MG_9775_1-scaled.jpg",
+        "https://www.maswearunderwear.com.co/wp-content/uploads/2024/07/MG_9777_1-scaled.jpg"
+      ],
+      "tallas": ["S", "M", "L", "XL"]
+    },
+    {
+      "nombre": "Fucsia",
+      "imágenes": [
+        "https://www.maswearunderwear.com.co/wp-content/uploads/2023/08/MG_7545-scaled.jpg",
+        "https://www.maswearunderwear.com.co/wp-content/uploads/2023/02/MG_7414-scaled.jpg",
+        "https://www.maswearunderwear.com.co/wp-content/uploads/2023/02/MG_7416-scaled.jpg"
+      ],
+      "tallas": ["S", "M", "L"]
+    },
+    {
+      "nombre": "Gris",
+      "imágenes": [
+        "https://www.maswearunderwear.com.co/wp-content/uploads/2024/07/MG_9779_1-scaled.jpg",
+        "https://www.maswearunderwear.com.co/wp-content/uploads/2024/07/MG_9789_1-scaled.jpg",
+        "https://www.maswearunderwear.com.co/wp-content/uploads/2024/07/MG_9790_1-scaled.jpg"
+      ],
+      "tallas": ["S", "M", "L"]
+    },
+    {
+      "nombre": "Lila",
+      "imágenes": [
+        "https://www.maswearunderwear.com.co/wp-content/uploads/2023/08/IMG_7503-scaled.jpg",
+        "https://www.maswearunderwear.com.co/wp-content/uploads/2023/01/MG_7353-scaled.jpg",
+        "https://www.maswearunderwear.com.co/wp-content/uploads/2023/01/MG_7355-scaled.jpg"
+      ],
+      "tallas": ["S", "M", "L", "XL"]
+    },
+    {
+      "nombre": "Mandarina",
+      "imágenes": [
+        "https://www.maswearunderwear.com.co/wp-content/uploads/2023/08/IMG_7514-1-scaled.jpg",
+        "https://www.maswearunderwear.com.co/wp-content/uploads/2023/02/MG_7409-scaled.jpg",
+        "https://www.maswearunderwear.com.co/wp-content/uploads/2023/02/MG_7411-scaled.jpg"
+      ],
+      "tallas": ["S", "M", "L", "XL"]
+    },
+    {
+      "nombre": "Militar",
+      "imágenes": [
+        "https://www.maswearunderwear.com.co/wp-content/uploads/2023/08/IMG_7519-scaled.jpg",
+        "https://www.maswearunderwear.com.co/wp-content/uploads/2023/02/MG_7401-scaled.jpg",
+        "https://www.maswearunderwear.com.co/wp-content/uploads/2023/02/MG_7404-scaled.jpg"
+      ],
+      "tallas": ["S", "M", "L", "XL"]
+    },
+    {
+      "nombre": "Morado",
+      "imágenes": [
+        "https://www.maswearunderwear.com.co/wp-content/uploads/2024/02/DSC_0112-Edit-3-scaled.jpeg",
+        "https://www.maswearunderwear.com.co/wp-content/uploads/2024/12/MG_9975.jpg",
+        "https://www.maswearunderwear.com.co/wp-content/uploads/2024/12/MG_9978.jpg"
+      ],
+      "tallas": ["S", "XL"]
+    },
+    {
+      "nombre": "Naranja",
+      "imágenes": [
+        "https://www.maswearunderwear.com.co/wp-content/uploads/2023/08/IMG_7521-1-scaled.jpg",
+        "https://www.maswearunderwear.com.co/wp-content/uploads/2023/01/MG_7334-scaled.jpg",
+        "https://www.maswearunderwear.com.co/wp-content/uploads/2023/01/MG_7337-scaled.jpg"
+      ],
+      "tallas": ["S", "M", "L", "XL"]
+    },
+    {
+      "nombre": "Negro",
+      "imágenes": [
+        "https://www.maswearunderwear.com.co/wp-content/uploads/2023/08/4-scaled.jpeg",
+        "https://www.maswearunderwear.com.co/wp-content/uploads/2023/07/MG_8228-scaled.jpg",
+        "https://www.maswearunderwear.com.co/wp-content/uploads/2023/07/MG_8230-scaled.jpg"
+      ],
+      "tallas": ["M", "L", "XL"]
+    },
+    {
+      "nombre": "Rojo",
+      "imágenes": [
+        "https://www.maswearunderwear.com.co/wp-content/uploads/2023/08/IMG_7504-scaled.jpg",
+        "https://www.maswearunderwear.com.co/wp-content/uploads/2023/01/MG_7369-scaled.jpg",
+        "https://www.maswearunderwear.com.co/wp-content/uploads/2023/01/MG_7372-scaled.jpg"
+      ],
+      "tallas": ["S", "M", "L", "XL"]
+    },
+    {
+      "nombre": "Rosado",
+      "imágenes": [
+        "https://www.maswearunderwear.com.co/wp-content/uploads/2023/08/IMG_7500-1-scaled.jpg",
+        "https://www.maswearunderwear.com.co/wp-content/uploads/2023/01/MG_7356-scaled.jpg",
+        "https://www.maswearunderwear.com.co/wp-content/uploads/2023/01/MG_7359-scaled.jpg"
+      ],
+      "tallas": ["S", "M", "L", "XL"]
+    },
+    {
+      "nombre": "Terracota",
+      "imágenes": [
+        "https://www.maswearunderwear.com.co/wp-content/uploads/2024/07/MG_9733_1-scaled.jpg",
+        "https://www.maswearunderwear.com.co/wp-content/uploads/2024/07/MG_9735_1-scaled.jpg",
+        "https://www.maswearunderwear.com.co/wp-content/uploads/2024/07/MG_9736_1-scaled.jpg"
+      ],
+      "tallas": ["S", "M", "L", "XL"]
+    },
+    {
+      "nombre": "Verde Limón",
+      "imágenes": [
+        "https://www.maswearunderwear.com.co/wp-content/uploads/2023/05/402221674_766812442127932_3157858163771173553_n.jpg",
+        "https://www.maswearunderwear.com.co/wp-content/uploads/2023/01/MG_7365-scaled.jpg",
+        "https://www.maswearunderwear.com.co/wp-content/uploads/2023/01/MG_7367-scaled.jpg"
+      ],
+      "tallas": ["S", "M", "L", "XL"]
+    },
+    {
+      "nombre": "Verde Menta",
+      "imágenes": [
+        "https://www.maswearunderwear.com.co/wp-content/uploads/2023/08/IMG_7499-1-scaled.jpg",
+        "https://www.maswearunderwear.com.co/wp-content/uploads/2023/01/MG_7350-scaled.jpg",
+        "https://www.maswearunderwear.com.co/wp-content/uploads/2023/01/MG_7352-scaled.jpg"
+      ],
+      "tallas": ["S", "M", "L", "XL"]
+    }
+  ]
+}
