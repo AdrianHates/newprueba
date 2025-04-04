@@ -11,6 +11,7 @@ export const FormProvider = ({ children }: { children: React.ReactNode }) => {
     direccion: "",
     oficina: "",
     productos: [],
+    observaciones: "",
   });
 
   const updateFormData = (newData: Partial<FormData>) => {
@@ -35,7 +36,9 @@ export const FormProvider = ({ children }: { children: React.ReactNode }) => {
   };
 
   return (
-    <FormContext.Provider value={{ formData, addProduct, updateFormData, removeProduct }}>
+    <FormContext.Provider
+      value={{ formData, addProduct, updateFormData, removeProduct }}
+    >
       {children}
     </FormContext.Provider>
   );

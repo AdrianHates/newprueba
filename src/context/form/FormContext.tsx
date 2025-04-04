@@ -14,6 +14,7 @@ export type FormData = {
   direccion: string;
   oficina: string;
   productos: Product[];
+  observaciones: string;
 };
 
 export type FormContextProps = {

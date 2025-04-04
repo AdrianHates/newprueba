@@ -13,7 +13,9 @@ const Contact = ({ id }: Props) => {
   const { formData, updateFormData, removeProduct } = formContext;
 
   const handleChange = (
-    e: React.ChangeEvent<HTMLInputElement | HTMLSelectElement>
+    e: React.ChangeEvent<
+      HTMLInputElement | HTMLSelectElement | HTMLTextAreaElement
+    >
   ) => {
     updateFormData({ [e.target.name]: e.target.value });
   };
@@ -34,18 +36,18 @@ const Contact = ({ id }: Props) => {
             formulario para realizar tu pedido.
           </p>
 
-          <div className="text-2xl sm:text-3xl flex flex-wrap mt-16">
+          <div className="text-2xl sm:text-3xl flex flex-wrap mt-10">
             <img src="star.svg" alt="star" className="w-5 h-5" />
-            <span className="bg-[#3ebcba] rounded-lg pt-0.5 pb-1 px-1">
-              📍 Compra Contra Entrega
+            <span className="bg-[#3ebcba] rounded-lg pt-1 pb-2 px-1.5 text-center w-full max-w-[25ch] lg:max-w-none">
+              📍 Compra Ahora y Paga Contra Entrega
             </span>{" "}
             <img
               src="star.svg"
               alt="star"
-              className="w-5 h-5 self-end max-[387px]:ml-auto"
+              className="w-5 h-5 self-end max-[427px]:ml-auto lg:ml-auto"
             />
             <p className="pl-6 mt-5">
-              Recibe tu pedido y paga al momento de la entrega con total
+              Realiza tu pedido y paga al momento de la entrega con total
               confianza.
             </p>
             <p className="text-base mt-5 text-[#003e52] italic">
@@ -58,7 +60,7 @@ const Contact = ({ id }: Props) => {
         </div>
 
         <form
-          action={`https://formsubmit.co/${data?.correo}`}
+          action={`https://formsubmit.co/herlessoliverramosespinoza@gmail.com`}
           method="POST"
           className="bg-[#273a52] flex flex-col relative text-white w-full max-w-none lg:max-w-[51%] xl:max-w-[50%] px-4.5 sm:px-10 py-8 rounded-xl gap-2 sm:gap-6"
         >
@@ -189,6 +191,16 @@ const Contact = ({ id }: Props) => {
                 .join(", ")} // Muestra los productos con formato "talla - color"
               readOnly
               className="border rounded-2xl px-3 py-1 text-gray-600"
+            />
+          </label>
+          <label className="flex flex-col gap-1.5">
+            <p className="font-bold">Observaciones (Opcional)</p>
+            <textarea
+              name="observaciones"
+              value={formData.observaciones}
+              onChange={handleChange}
+              className="border rounded-2xl px-3 py-1 resize-none min-h-[100px]"
+              placeholder="Escribe aquí cualquier comentario adicional..."
             />
           </label>
           <button

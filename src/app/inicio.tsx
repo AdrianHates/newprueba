@@ -27,7 +27,7 @@ const Inicio = ({ id, numberPhone }: Props) => {
           Comprar Ahora
         </a>
       </div>
-      <div className="bg-black/80 w-full h-full absolute top-0" />
+      <div className="bg-black/50 w-full h-full absolute top-0" />
     </section>
   );
 };

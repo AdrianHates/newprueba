@@ -7,6 +7,7 @@ interface Props {
 }
 
 const Gallery = ({ id }: Props) => {
+  const ALL_SIZES = ["S", "M", "L", "XL"];
   const [selectedIndex, setSelectedIndex] = useState(0);
   const [selectIndexImage, setSelectedIndexImage] = useState(0);
   const [selectIndexSize, setSelectIndexSize] = useState(0);
@@ -19,8 +20,7 @@ const Gallery = ({ id }: Props) => {
   if (!context) {
     throw new Error("Gallery must be used within a FormProvider");
   }
-  const { addProduct, formData } = context;
-  console.log(formData);
+  const { addProduct } = context;
   const producto = data?.productos?.[selectedIndex];
 
   const handleMouseMove = (e: React.MouseEvent<HTMLDivElement>) => {
@@ -43,10 +43,9 @@ const Gallery = ({ id }: Props) => {
   };
 
   const handleAddToCart = () => {
-    // Agregar el producto seleccionado al carrito
     const selectedProduct = {
-      talla: producto?.tallas?.[selectIndexSize],
-      color: producto?.nombre, // Aquí puedes usar cualquier propiedad de color del producto
+      talla: ALL_SIZES?.[selectIndexSize],
+      color: producto?.nombre,
     };
 
     addProduct(selectedProduct.talla, selectedProduct.color);
@@ -69,6 +68,7 @@ const Gallery = ({ id }: Props) => {
           <div
             onClick={() => {
               setSelectedIndex(i);
+              setSelectIndexSize(0);
             }}
             key={i}
             className={`hover:text-[#3ebcba] hover:bg-[#273a52] duration-300 cursor-pointer border-2 italic border-[#273a52] px-2 py-0.5 rounded-2xl font-semibold ${
@@ -103,21 +103,43 @@ const Gallery = ({ id }: Props) => {
         </div>
         <div className="text-lg flex items-center gap-4 sm:gap-16 font-extralight italic flex-col sm:flex-row">
           <div className="flex gap-2">
-            {data?.productos?.[selectedIndex]?.tallas?.map((talla, i) => (
-              <div
-                className={`cursor-pointer border border-black/50 ${
-                  i === selectIndexSize &&
-                  "border-black/100 border-2 font-semibold"
-                } rounded-lg w-10 h-10 flex items-center justify-center`}
-                key={i}
-                onClick={() => {
-                  setSelectIndexSize(i);
-                }}
-              >
-                {talla}
-              </div>
-            ))}
+            {ALL_SIZES.map((talla, i) => {
+              const isAvailable =
+                data?.productos?.[selectedIndex]?.tallas?.includes(talla);
+              const isSelected = i === selectIndexSize;
+
+              return (
+                <div
+                  key={talla}
+                  onClick={() => {
+                    if (isAvailable) {
+                      setSelectIndexSize(i);
+                    }
+                  }}
+                  className={`relative cursor-pointer border rounded-lg w-10 h-10 flex items-center justify-center transition
+          ${
+            isAvailable
+              ? "border-black/50 text-black"
+              : "border-gray-300 text-gray-400 cursor-not-allowed"
+          }
+          ${
+            isAvailable && isSelected
+              ? "border-black/100 border-2 font-semibold bg-gray-200"
+              : ""
+          }
+        `}
+                >
+                  {talla}
+                  {!isAvailable && (
+                    <span className="absolute top-1/2 left-1/2 translate-x-[-50%] translate-y-[-50%] text-black/30 text-3xl font-extralight not-italic">
+                      ✕
+                    </span>
+                  )}
+                </div>
+              );
+            })}
           </div>
+
           <div className="flex flex-col border px-2 font-normal">
             <p className="border-b font-semibold">Precios:</p>
             <p className="w-28 flex justify-between">
