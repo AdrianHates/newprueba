@@ -143,8 +143,8 @@ const Navbar = ({ opts }: Props) => {
                   </a>
                 </li>
               ))}
-            <div className="items-center justify-center w-full flex py-4">
-              <ul className="flex sm:hidden gap-4">
+            <div className="items-center justify-center w-full flex sm:hidden py-4 ">
+              <ul className="flex gap-4">
                 {redes &&
                   redes.map((red, i) => {
                     const sub =

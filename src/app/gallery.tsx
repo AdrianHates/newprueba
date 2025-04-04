@@ -101,21 +101,39 @@ const Gallery = ({ id }: Props) => {
             ))}
           </select>
         </div>
-        <div className="text-lg flex items-center gap-2 font-extralight italic">
-          {data?.productos?.[selectedIndex]?.tallas?.map((talla, i) => (
-            <div
-              className={`cursor-pointer border border-black/50 ${
-                i === selectIndexSize &&
-                "border-black/100 border-2 font-semibold"
-              } rounded-lg w-10 h-10 flex items-center justify-center`}
-              key={i}
-              onClick={() => {
-                setSelectIndexSize(i);
-              }}
-            >
-              {talla}
-            </div>
-          ))}
+        <div className="text-lg flex items-center gap-4 sm:gap-16 font-extralight italic flex-col sm:flex-row">
+          <div className="flex gap-2">
+            {data?.productos?.[selectedIndex]?.tallas?.map((talla, i) => (
+              <div
+                className={`cursor-pointer border border-black/50 ${
+                  i === selectIndexSize &&
+                  "border-black/100 border-2 font-semibold"
+                } rounded-lg w-10 h-10 flex items-center justify-center`}
+                key={i}
+                onClick={() => {
+                  setSelectIndexSize(i);
+                }}
+              >
+                {talla}
+              </div>
+            ))}
+          </div>
+          <div className="flex flex-col border px-2 font-normal">
+            <p className="border-b font-semibold">Precios:</p>
+            <p className="w-28 flex justify-between">
+              1 x <span className="text-[#3ebcba] font-semibold">$35,000</span>
+            </p>
+            <p className="w-28 flex justify-between">
+              3 x <span className="text-[#3ebcba] font-semibold">$99,900</span>
+            </p>
+            <p className="w-28 flex justify-between">
+              6 x <span className="text-[#3ebcba] font-semibold">$180,000</span>
+            </p>
+            <p className="w-28 flex justify-between">
+              12 x{" "}
+              <span className="text-[#3ebcba] font-semibold">$299,900</span>
+            </p>
+          </div>
         </div>
         <button
           onClick={handleAddToCart}
