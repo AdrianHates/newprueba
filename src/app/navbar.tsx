@@ -58,7 +58,7 @@ const Navbar = ({ opts }: Props) => {
     <nav
       className={`fixed left-0 z-20 top-0 w-full py-4 flex flex-col  shadow-[0px_0px_10px_0px_rgba(0,0,0,0.05)] ${
         scrollPosition > 50
-          ? "bg-[#081F2D]/40 text-white transition-all backdrop-blur-sm"
+          ? "lg:bg-[#081F2D]/40 bg-white text-black lg:text-white transition-all lg:backdrop-blur-sm"
           : "bg-white"
       }`}
     >
