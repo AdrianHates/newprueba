@@ -60,7 +60,7 @@ const Contact = ({ id }: Props) => {
         </div>
 
         <form
-          action={`https://formsubmit.co/herlessoliverramosespinoza@gmail.com`}
+          action={`https://formsubmit.co/${data?.correo}`}
           method="POST"
           className="bg-[#273a52] flex flex-col relative text-white w-full max-w-none lg:max-w-[51%] xl:max-w-[50%] px-4.5 sm:px-10 py-8 rounded-xl gap-2 sm:gap-6"
         >
