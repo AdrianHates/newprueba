@@ -176,11 +176,13 @@ const Gallery = ({ id }: Props) => {
                 <img
                   src={producto?.imágenes[selectIndexImage]}
                   className="w-full h-full object-cover"
+                  alt={producto?.nombre}
                 />
                 <img
                   src={producto?.imágenes[selectIndexImage]}
                   className="group-hover:opacity-100 opacity-0 group-hover:duration-300 duration-[0s] transition-opacity ease-in-out w-full h-full object-cover scale-[1.5] absolute top-0 cursor-crosshair"
                   style={{ transform: transformStyle }}
+                  alt={producto?.nombre}
                 />
               </>
             )}
@@ -195,7 +197,12 @@ const Gallery = ({ id }: Props) => {
                     setSelectedIndexImage(i);
                   }}
                 >
-                  <img src={img} key={i} className="rounded-xl w-full" />
+                  <img
+                    src={img}
+                    key={i}
+                    className="rounded-xl w-full"
+                    alt={`img-${i + 1}`}
+                  />
                   {i !== selectIndexImage && (
                     <div className="absolute w-full h-full top-0 bg-white/40 rounded-xl" />
                   )}
