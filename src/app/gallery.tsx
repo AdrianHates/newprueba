@@ -200,8 +200,10 @@ const Gallery = ({ id }: Props) => {
                   <img
                     src={img}
                     key={i}
-                    className="rounded-xl w-full"
+                    className="rounded-xl"
                     alt={`img-${i + 1}`}
+                    width={"100%"}
+                    height={"100%"}
                   />
                   {i !== selectIndexImage && (
                     <div className="absolute w-full h-full top-0 bg-white/40 rounded-xl" />
