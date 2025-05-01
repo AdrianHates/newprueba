@@ -50,10 +50,10 @@ const Contact = ({ id }: Props) => {
               Realiza tu pedido y paga al momento de la entrega con total
               confianza.
             </p>
-            <p className="text-base mt-5 text-[#003e52] italic">
+            <p className="text-base mt-5 text-[#267e7d] italic">
               📞 Serás contactado en menos de 24 horas para confirmar tu pedido.
             </p>
-            <p className="text-[red] font-semibold mt-8 italic text-xl">
+            <p className="text-[#267e7d] font-semibold mt-8 italic text-xl">
               Las prendas íntimas no tienen cambio. Ley 1480 de 2011.
             </p>
           </div>
@@ -205,7 +205,7 @@ const Contact = ({ id }: Props) => {
           </label>
           <button
             type="submit"
-            className="bg-[#3ebcba] rounded-2xl mt-3 px-3 py-2 font-semibold cursor-pointer hover:saturate-150 hover:scale-105 duration-300"
+            className="bg-[#267e7d] rounded-2xl mt-3 px-3 py-2 font-semibold cursor-pointer hover:saturate-150 hover:scale-105 duration-300"
           >
             Enviar Información
           </button>

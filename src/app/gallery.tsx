@@ -144,17 +144,16 @@ const Gallery = ({ id }: Props) => {
           <div className="flex flex-col border px-2 font-normal">
             <p className="border-b font-semibold">Precios:</p>
             <p className="w-28 flex justify-between">
-              1 x <span className="text-[#3ebcba] font-semibold">$35,000</span>
+              1 x <span className="text-[#267e7d] font-semibold">$35,000</span>
             </p>
             <p className="w-28 flex justify-between">
-              3 x <span className="text-[#3ebcba] font-semibold">$99,900</span>
+              3 x <span className="text-[#267e7d] font-semibold">$99,900</span>
             </p>
             <p className="w-28 flex justify-between">
-              6 x <span className="text-[#3ebcba] font-semibold">$180,000</span>
+              6 x <span className="text-[#267e7d] font-semibold">$180,000</span>
             </p>
             <p className="w-28 flex justify-between">
-              12 x{" "}
-              <span className="text-[#3ebcba] font-semibold">$299,900</span>
+              12 x<span className="text-[#267e7d] font-semibold">$299,900</span>
             </p>
           </div>
         </div>
