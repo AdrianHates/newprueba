@@ -83,10 +83,11 @@ const Gallery = ({ id }: Props) => {
       </div>
       <div className="flex flex-col gap-2 items-center px-10">
         <div className="flex sm:flex-row flex-col items-center justify-center gap-2">
-          <p className="text-md font-semibold">
+          <label className="text-md font-semibold" htmlFor="colorSelect">
             Elige el color que deseas ver:
-          </p>
+          </label>
           <select
+            id="colorSelect"
             value={selectedIndex}
             onChange={(e) => {
               setSelectedIndexImage(0);
