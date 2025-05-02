@@ -20,6 +20,7 @@ const Inicio = ({ id, numberPhone }: Props) => {
         </p>
         <a
           href={`https://wa.me/+57${numberPhone}`}
+          aria-label="Chatea por WhatsApp con Maswear"
           target="_blank"
           rel="noreferrer"
           className="bg-[#273a52] px-6 py-2 font-bold self-center rounded-3xl hover:bg-[#3ebcba] hover:scale-105 duration-300"
