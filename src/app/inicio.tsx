@@ -12,7 +12,7 @@ const Inicio = ({ id, numberPhone }: Props) => {
         <h1 className="text-2xl min-[400px]:text-3xl md:text-4xl leading-[1.5] font-bold">
           Más Wear Medellín – Comodidad y Frescura en Todo Momento
         </h1>
-        <p className="text-base md:text-lg">
+        <p className="text-base md:text-lg text-white">
           Bienvenido a Más Wear Medellín, la marca de ropa interior masculina
           diseñada para brindarte la máxima comodidad y frescura durante todo el
           día. Nuestra tecnología y materiales te permiten moverte con total
