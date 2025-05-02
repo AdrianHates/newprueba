@@ -162,11 +162,6 @@ const Navbar = ({ opts }: Props) => {
                         <a
                           className="cursor-pointer"
                           target="_blank"
-                          aria-label={
-                            red?.link === "number"
-                              ? `Visítamos en Whatsapp`
-                              : `Visítamos en Instagram`
-                          }
                           href={
                             typeof red?.link === "number"
                               ? `https://wa.me/+${sub}`

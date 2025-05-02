@@ -5,6 +5,7 @@ export default function WS({ numberPhone }: { numberPhone: number }) {
       href={`https://wa.me/+57${numberPhone}`}
       target="_blank"
       rel="noreferrer"
+      aria-label="Chatea por WhatsApp con Maswear"
       className="WS"
     >
       <svg
